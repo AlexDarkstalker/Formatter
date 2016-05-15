@@ -7,11 +7,12 @@ import com.Seleznev.Writer.IWriter.IWriter;
 import java.io.*;
 
 /**
+ * class for output to the string
  * Created by alxunderseelisnow on 14.05.16.
  */
 public class MyStringWriter implements IWriter {
-    Writer stringWriter;
-    StringBuffer output;
+    private Writer stringWriter;
+    private StringBuffer output;
     public MyStringWriter(String output) throws MyEncodingWriterException {
         this.stringWriter = new StringWriter();
         this.output = new StringBuffer(output);

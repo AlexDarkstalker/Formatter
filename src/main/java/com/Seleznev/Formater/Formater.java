@@ -6,9 +6,17 @@ import com.Seleznev.Reader.IReader.IReader;
 import com.Seleznev.Writer.IWriter.IWriter;
 
 /**
+ * Class Formater with method format
  * Created by alxunderseelisnow on 13.05.16.
  */
 public class Formater {
+    /**
+     *
+     * @param in input stream
+     * @param out output stream
+     * @throws MyReaderFormaterException
+     * @throws MyIOWriterFormaterException
+     */
     public static void format(IReader in, IWriter out) throws MyReaderFormaterException, MyIOWriterFormaterException {
         int count = 0;
         char symbol;

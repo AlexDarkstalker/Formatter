@@ -8,12 +8,19 @@ import com.Seleznev.Writer.MyWriterException;
 import java.io.*;
 
 /**
+ * Class realisation of output in the file
  * Created by alxunderseelisnow on 14.05.16.
  */
 public class FileWriter implements IWriter {
-    Writer printWriter;
+    private Writer printWriter;
 
 
+    /**
+     * constructor
+     * @param fileName title of the file for the output
+     * @throws MyWriterException
+     * @throws MyEncodingWriterException
+     */
     public FileWriter(String fileName) throws MyWriterException, MyEncodingWriterException {
         try {
             OutputStream fileStream = new FileOutputStream(new File(fileName));
@@ -24,10 +31,13 @@ public class FileWriter implements IWriter {
         } catch (UnsupportedEncodingException e) {
             throw new MyEncodingWriterException("Wrong encoding", e);
         }
-
-
     }
 
+    /**
+     * puts the string to be output in the file output stream
+     * @param outPutPart string to be output
+     * @throws MyIOWriterException
+     */
     public void write(String outPutPart) throws MyIOWriterException {
         try {
             this.printWriter.append(outPutPart);
@@ -36,6 +46,10 @@ public class FileWriter implements IWriter {
         }
     }
 
+    /**
+     * closes file output stream
+     * @throws MyIOWriterException
+     */
     public void close() throws MyIOWriterException {
         try {
             this.printWriter.close();

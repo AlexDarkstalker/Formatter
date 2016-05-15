@@ -7,11 +7,17 @@ import com.Seleznev.Reader.IReader.IReader;
 import java.io.*;
 
 /**
+ * class for string input stream
  * Created by alxunderseelisnow on 14.05.16.
  */
 public class MyStringReader implements IReader {
-    Reader stringReader;
+    private Reader stringReader;
 
+    /**
+     * constructor
+     * @param input title of the string for string input
+     * @throws MyEncodingReaderException
+     */
     public MyStringReader(String input) throws MyEncodingReaderException {
 
         try {
@@ -23,6 +29,12 @@ public class MyStringReader implements IReader {
         }
 
     }
+
+    /**
+     * gets elem from string to the stream
+     * @return current element from the string stream
+     * @throws MyReaderException
+     */
     public char getNext() throws MyReaderException {
         try {
             return (char) this.stringReader.read();
@@ -31,6 +43,10 @@ public class MyStringReader implements IReader {
         }
     }
 
+    /**
+     * close the stream
+     * @throws MyReaderException
+     */
     public void close() throws MyReaderException {
         try {
             this.stringReader.close();
@@ -39,6 +55,11 @@ public class MyStringReader implements IReader {
         }
     }
 
+    /**
+     * check if there are any more elements in the stream
+     * @return true if there are elements in the string input stream
+     * @throws MyReaderException
+     */
     public boolean hasNext() throws MyReaderException {
         try {
             return this.stringReader.ready();

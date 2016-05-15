@@ -21,8 +21,10 @@ import java.io.UnsupportedEncodingException;
 import static com.Seleznev.Formater.Formater.format;
 
 /**
+ * Main class
  * Created by alxunderseelisnow on 15.05.16.
  */
+
 public class Main {
     public static void main(String [] argv) throws FileNotFoundException, UnsupportedEncodingException, MyReaderException, MyEncodingWriterException, MyWriterException, MyIOWriterException, MyEncodingReaderException, MyReaderFileNotFoundException, MyIOWriterFormaterException, MyReaderFormaterException {
         IReader in = new FileReader("input.txt");
