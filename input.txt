@@ -1,0 +1,1 @@
+"makefunc(){dosmth;alsosmth;усложним{что-тоделаем;ещенемного}andalsosmth;finish}"
