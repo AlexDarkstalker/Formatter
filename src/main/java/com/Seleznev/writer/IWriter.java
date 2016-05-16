@@ -1,6 +1,6 @@
-package com.Seleznev.Writer.IWriter;
+package com.Seleznev.writer;
 
-import com.Seleznev.Writer.MyIOWriterException;
+import com.Seleznev.writer.MyIOWriterException;
 
 /**
  * Interface for output streams

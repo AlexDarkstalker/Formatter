@@ -1,4 +1,4 @@
-package com.Seleznev.Formater;
+package com.Seleznev.formater;
 
 import com.Seleznev.Reader.MyReaderException;
 import com.Seleznev.Writer.*;
@@ -6,7 +6,7 @@ import com.Seleznev.Reader.IReader.IReader;
 import com.Seleznev.Writer.IWriter.IWriter;
 
 /**
- * Class Formater with method format
+ * Class formater with method format
  * Created by alxunderseelisnow on 13.05.16.
  */
 public class Formater {

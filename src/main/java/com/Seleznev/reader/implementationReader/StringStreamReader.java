@@ -1,8 +1,8 @@
-package com.Seleznev.Reader.RealisationsReader;
+package com.Seleznev.reader.implementationReader;
 
-import com.Seleznev.Reader.MyEncodingReaderException;
-import com.Seleznev.Reader.MyReaderException;
-import com.Seleznev.Reader.IReader.IReader;
+import com.Seleznev.reader.MyEncodingReaderException;
+import com.Seleznev.reader.MyReaderException;
+import com.Seleznev.reader.IReader;
 
 import java.io.*;
 
@@ -10,7 +10,7 @@ import java.io.*;
  * class for string input stream
  * Created by alxunderseelisnow on 14.05.16.
  */
-public class MyStringReader implements IReader {
+public class StringStreamReader implements IReader {
     private Reader stringReader;
 
     /**
@@ -18,7 +18,7 @@ public class MyStringReader implements IReader {
      * @param input title of the string for string input
      * @throws MyEncodingReaderException
      */
-    public MyStringReader(String input) throws MyEncodingReaderException {
+    public StringStreamReader(String input) throws MyEncodingReaderException {
 
         try {
             InputStream stringStream = new ByteArrayInputStream(input.getBytes("utf-8"));

@@ -1,9 +1,9 @@
-package com.Seleznev.Writer.RealisationWriter;
+package com.Seleznev.writer.implementationWriter;
 
-import com.Seleznev.Writer.IWriter.IWriter;
-import com.Seleznev.Writer.MyEncodingWriterException;
-import com.Seleznev.Writer.MyIOWriterException;
-import com.Seleznev.Writer.MyWriterException;
+import com.Seleznev.writer.IWriter;
+import com.Seleznev.writer.MyEncodingWriterException;
+import com.Seleznev.writer.MyIOWriterException;
+import com.Seleznev.writer.MyWriterException;
 
 import java.io.*;
 

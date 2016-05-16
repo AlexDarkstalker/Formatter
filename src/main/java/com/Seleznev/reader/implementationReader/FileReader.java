@@ -1,9 +1,9 @@
-package com.Seleznev.Reader.RealisationsReader;
+package com.Seleznev.reader.implementationReader;
 
-import com.Seleznev.Reader.IReader.IReader;
-import com.Seleznev.Reader.MyEncodingReaderException;
-import com.Seleznev.Reader.MyReaderException;
-import com.Seleznev.Reader.MyReaderFileNotFoundException;
+import com.Seleznev.reader.IReader;
+import com.Seleznev.reader.MyEncodingReaderException;
+import com.Seleznev.reader.MyReaderException;
+import com.Seleznev.reader.MyReaderFileNotFoundException;
 
 import java.io.*;
 
@@ -27,7 +27,7 @@ public class FileReader implements IReader {
             Reader fileReader = new InputStreamReader(fileStream, "utf-8");
             this.reader = new BufferedReader(fileReader);
         } catch (FileNotFoundException e) {
-            throw new MyReaderFileNotFoundException("Reader can't open file", e);
+            throw new MyReaderFileNotFoundException("reader can't open file", e);
         } catch (UnsupportedEncodingException e) {
             throw new MyEncodingReaderException("File reader wrong encoding", e);
         }

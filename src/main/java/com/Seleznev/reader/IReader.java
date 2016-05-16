@@ -1,6 +1,6 @@
-package com.Seleznev.Reader.IReader;
+package com.Seleznev.reader;
 
-import com.Seleznev.Reader.MyReaderException;
+import com.Seleznev.reader.MyReaderException;
 
 /**
  * Input interface
