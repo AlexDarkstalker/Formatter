@@ -1,24 +1,22 @@
 package com.Seleznev.main;
 
-import com.Seleznev.formater.MyIOWriterFormaterException;
-import com.Seleznev.formater.MyReaderFormaterException;
-import com.Seleznev.Reader.RealisationsReader.FileReader;
-import com.Seleznev.Reader.IReader.IReader;
-import com.Seleznev.Reader.MyEncodingReaderException;
-import com.Seleznev.Reader.MyReaderException;
-import com.Seleznev.Reader.MyReaderFileNotFoundException;
-import com.Seleznev.Reader.RealisationsReader.MyStringReader;
-import com.Seleznev.Writer.RealisationWriter.FileWriter;
-import com.Seleznev.Writer.IWriter.IWriter;
-import com.Seleznev.Writer.MyEncodingWriterException;
-import com.Seleznev.Writer.MyIOWriterException;
-import com.Seleznev.Writer.MyWriterException;
-import com.Seleznev.Writer.RealisationWriter.StringStreamWriter;
-
-import java.io.FileNotFoundException;
-import java.io.UnsupportedEncodingException;
-
-import static com.Seleznev.formater.Formater.format;
+import com.Seleznev.formatter.FormaterIOWriterException;
+import com.Seleznev.formatter.FormaterReaderException;
+import com.Seleznev.formatter.IFormatter;
+import com.Seleznev.formatter.formatterImplementation.Formatter;
+import com.Seleznev.reader.implementationReader.FileReader;
+import com.Seleznev.reader.IReader;
+import com.Seleznev.reader.EncodingReaderException;
+import com.Seleznev.reader.ReaderFileNotFoundException;
+import com.Seleznev.reader.implementationReader.StringStreamReader;
+import com.Seleznev.writer.implementationWriter.FileWriter;
+import com.Seleznev.writer.IWriter;
+import com.Seleznev.writer.EncodingWriterException;
+import com.Seleznev.writer.WriterException;
+import com.Seleznev.writer.implementationWriter.StringStreamWriter;
+import java.io.ByteArrayOutputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * main class
@@ -26,13 +24,36 @@ import static com.Seleznev.formater.Formater.format;
  */
 
 public class Main {
-    public static void main(String [] argv) throws FileNotFoundException, UnsupportedEncodingException, MyReaderException, MyEncodingWriterException, MyWriterException, MyIOWriterException, MyEncodingReaderException, MyReaderFileNotFoundException, MyIOWriterFormaterException, MyReaderFormaterException {
-        String input = "makefunc(){dosmth;alsosmth;усложним{что-тоделаем;ещенемного}andalsosmth;finish}";
-        IReader inString = new MyStringReader(input);
-        IWriter outString = new StringStreamWriter();
-        IReader in = new FileReader("input.txt");
-        IWriter out = new FileWriter("output.txt");
-        format(in, out);
-        format(inString,outString);
+    public static void main(String [] argv) throws MainException {
+        Map<Character, String> symbolAction = new HashMap<Character, String>();
+        symbolAction.put('{', " {\n    ");
+        symbolAction.put('}', "\n} ");
+        symbolAction.put(';', ";\n    ");
+        String input = "makefunc(){dosmth;alsosmth;усложним{что-тоделаем;ещенемного;}andalsosmth;finish;}";
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        IReader inString = null;
+        try {
+            inString = new StringStreamReader(input);
+            IWriter outString = new StringStreamWriter(output);
+            IReader in = new FileReader("input.txt");
+            IWriter out = new FileWriter("output.txt");
+            IFormatter iformat = new Formatter(in, out, symbolAction);
+            iformat.format();
+            iformat = new Formatter(inString,outString, symbolAction);
+            iformat.format();
+        } catch (EncodingReaderException e) {
+            throw new MainException("Main error encoding reader", e);
+        } catch (FormaterIOWriterException e) {
+            throw new MainException("Main error IOWriting exception", e);
+        } catch (WriterException e) {
+            throw new MainException("Main error writer exception", e);
+        } catch (FormaterReaderException e) {
+            throw new MainException("Main error formatter reading exception", e);
+        } catch (ReaderFileNotFoundException e) {
+            throw new MainException("Main error file not found", e);
+        } catch (EncodingWriterException e) {
+            throw new MainException("Main error encoding writer", e);
+        }
+        System.out.print(new String(output.toByteArray()));
     }
 }

@@ -17,7 +17,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>com.Seleznev.Main.Main</mainClass>
+                            <mainClass>com.Seleznev.main.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

@@ -1,7 +1,5 @@
 package com.Seleznev.reader;
 
-import com.Seleznev.reader.MyReaderException;
-
 /**
  * Input interface
  * Created by alxunderseelisnow on 14.05.16.
@@ -11,20 +9,20 @@ public interface IReader {
     /**
      *
      * @return next symbol from the stream
-     * @throws MyReaderException
+     * @throws ReaderException
      */
-    char getNext() throws MyReaderException;
+    char getNext() throws ReaderException;
 
     /**
      *
-     * @throws MyReaderException
+     * @throws ReaderException
      */
-    void close() throws MyReaderException;
+    void close() throws ReaderException;
 
     /**
      *
      * @return true if there are more symbols in the stream
-     * @throws MyReaderException
+     * @throws ReaderException
      */
-    boolean hasNext() throws MyReaderException;
+    boolean hasNext() throws ReaderException;
 }
