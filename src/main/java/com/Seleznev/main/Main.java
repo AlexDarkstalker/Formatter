@@ -3,6 +3,10 @@ package com.Seleznev.main;
 import com.Seleznev.formatter.FormaterIOWriterException;
 import com.Seleznev.formatter.FormaterReaderException;
 import com.Seleznev.formatter.IFormatter;
+import com.Seleznev.formatter.action.IAction;
+import com.Seleznev.formatter.action.actionImplementation.ClosingBraceAction;
+import com.Seleznev.formatter.action.actionImplementation.InitialBraceAction;
+import com.Seleznev.formatter.action.actionImplementation.SemicolonAction;
 import com.Seleznev.formatter.formatterImplementation.Formatter;
 import com.Seleznev.reader.implementationReader.FileReader;
 import com.Seleznev.reader.IReader;
@@ -25,11 +29,14 @@ import java.util.Map;
 
 public class Main {
     public static void main(String [] argv) throws MainException {
-        Map<Character, String> symbolAction = new HashMap<Character, String>();
-        symbolAction.put('{', " {\n    ");
-        symbolAction.put('}', "\n} ");
-        symbolAction.put(';', ";\n    ");
-        String input = "makefunc(){dosmth;alsosmth;усложним{что-тоделаем;ещенемного;}andalsosmth;finish;}";
+        IAction close = new ClosingBraceAction();
+        IAction open = new InitialBraceAction();
+        IAction semicolon = new SemicolonAction();
+        Map<Character, IAction> symbolAction = new HashMap<Character, IAction>();
+        symbolAction.put('{', open);
+        symbolAction.put('}', close);
+        symbolAction.put(';', semicolon);
+        String input = "makefunc(){dosmth;alsosmth;усложним{что-тоделаем;ещенемного}andalsosmth;finish;}";
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         IReader inString = null;
         try {

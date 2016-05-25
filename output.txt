@@ -2,8 +2,8 @@
     dosmth;
     alsosmth;
     усложним {
-    что-тоделаем;
-    ещенемного
-} andalsosmth;
-    finish
-} "
+        что-тоделаем;
+        ещенемного}
+    andalsosmth;
+    finish}
+"
